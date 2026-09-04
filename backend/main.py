@@ -11,6 +11,7 @@ import asyncio
 import json
 import numpy as np
 
+from pathlib import Path
 import cv2
 import os
 import threading
@@ -23,6 +24,9 @@ import time
 
 load_dotenv()
 
+BASE_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = BASE_DIR.parent
+
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 
@@ -30,26 +34,29 @@ SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 # Night video source
 # ---------------------------------------------------------
 # Put your MP4 path here or set NIGHT_VIDEO_PATH in .env
+DEFAULT_NIGHT_VIDEO = str(PROJECT_ROOT / "videos" / "night vision 2.mp4")
 
 NIGHT_VIDEO_PATH = os.getenv(
     "NIGHT_VIDEO_PATH",
-    r"C:\Antigravity Projects\AERIS\videos\night vision 2.mp4"
+    DEFAULT_NIGHT_VIDEO
 )
 
 
 # ---------------------------------------------------------
 # Your trained night model
 # ---------------------------------------------------------
+DEFAULT_NIGHT_MODEL = str(PROJECT_ROOT / "model_training" / "weights" / "best.pt")
 
 NIGHT_MODEL_PATH = os.getenv(
     "NIGHT_MODEL_PATH",
-    r"C:\Antigravity Projects\AERIS\model_training\runs\detect\train-3\weights\best.pt"
+    DEFAULT_NIGHT_MODEL
 )
 
 NORMAL_MODEL_PATH = os.getenv(
     "NORMAL_MODEL_PATH",
     "yolo11n.pt"
 )
+
 
 
 # ---------------------------------------------------------

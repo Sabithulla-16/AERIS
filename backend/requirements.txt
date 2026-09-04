@@ -3,3 +3,7 @@ uvicorn[standard]
 supabase
 python-dotenv
 pydantic
+ultralytics
+opencv-python
+numpy
+requests
