@@ -1,0 +1,6 @@
+path: ./thermal_dataset/dataset
+train: train/images
+val: test/images   # Using test as validation set
+
+nc: 1
+names: ['human']
